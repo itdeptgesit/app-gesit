@@ -149,7 +149,6 @@ export const APP_MENU_STRUCTURE = [
     { id: 'admin', label: 'Administration', iconName: 'Shield' },
     { id: 'employee-data', label: 'Data Employee', iconName: 'Users' },
     { id: 'users', label: 'User Accounts', parentId: 'admin', iconName: 'Users' },
-    { id: 'credential', label: 'Credentials', parentId: 'admin', iconName: 'Key' },
     { id: 'csl-settings', label: 'CSL Settings', parentId: 'admin', iconName: 'Settings' },
     { id: 'system-settings', label: 'System Settings', parentId: 'admin', iconName: 'Settings' },
     { id: 'tracking-log', label: 'Tracking Log', parentId: 'admin', iconName: 'History' },

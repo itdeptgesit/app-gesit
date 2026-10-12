@@ -25,3 +25,11 @@ dbg_*
 **/*.sql
 *.md
 **/*.md
+
+# Utility & scratch scripts
+*.ps1
+check_db.js
+fix_*.js
+inspect.*
+scratch.jsx
+ts_errors.txt
