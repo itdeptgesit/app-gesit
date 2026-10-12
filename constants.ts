@@ -30,14 +30,6 @@ export const MOCK_GROUPS = [
         ]
     },
     {
-        id: 'hr',
-        name: 'Human Resources',
-        description: 'Kelola data employee, kalender, dan attendance HR',
-        allowedMenus: [
-            'dashboard', 'hr-dashboard', 'attendance', 'employee-data', 'calendar'
-        ]
-    },
-    {
         id: 'general_user',
         name: 'General User',
         description: 'Lihat data umum; bisa buat request CSL & ticketing IT',
@@ -132,14 +124,6 @@ export const APP_MENU_STRUCTURE = [
     { id: 'asset-loan', label: 'Asset Loan & Return', parentId: 'it-assets', iconName: 'ArrowLeftRight' },
     { id: 'asset-handover', label: 'Asset Handover (BAST)', parentId: 'it-assets', iconName: 'FileCheck' },
 
-    // ── Human Resources ──
-    { id: 'hr-dashboard', label: 'HR Dashboard', iconName: 'LayoutDashboard' },
-    { id: 'attendance', label: 'Absensi', iconName: 'Clock' },
-    { id: 'attendance-report', label: 'Report', parentId: 'attendance', iconName: 'BarChart3' },
-    { id: 'calendar', label: 'Calendar', parentId: 'attendance', iconName: 'Calendar' },
-    { id: 'attendance-request', label: 'Request', parentId: 'attendance', iconName: 'FileText' },
-    { id: 'attendance-locations', label: 'Radius', parentId: 'attendance', iconName: 'MapPin' },
-
     // ── Other Shared Directories ──
     { id: 'extension-directory', label: 'Directory Internal', iconName: 'PhoneCall' },
     { id: 'office-layout', label: 'Office Layout', iconName: 'MapPin' },
@@ -147,7 +131,6 @@ export const APP_MENU_STRUCTURE = [
 
     // ── Administration & Master Data ──
     { id: 'admin', label: 'Administration', iconName: 'Shield' },
-    { id: 'employee-data', label: 'Data Employee', iconName: 'Users' },
     { id: 'users', label: 'User Accounts', parentId: 'admin', iconName: 'Users' },
     { id: 'csl-settings', label: 'CSL Settings', parentId: 'admin', iconName: 'Settings' },
     { id: 'system-settings', label: 'System Settings', parentId: 'admin', iconName: 'Settings' },

@@ -69,11 +69,8 @@ const SystemSettings = React.lazy(() => import('./components/SystemSettings').th
 const AnnouncementManager = React.lazy(() => import('./components/AnnouncementManager').then(m => ({ default: m.AnnouncementManager })));
 const ExtensionDirectory = React.lazy(() => import('./components/ExtensionDirectory').then(m => ({ default: m.ExtensionDirectory })));
 const OfficeLayoutManager = React.lazy(() => import('./components/OfficeLayoutManager').then(m => ({ default: m.OfficeLayoutManager })));
-const AttendanceManager = React.lazy(() => import('./components/AttendanceManager').then(m => ({ default: m.AttendanceManager })));
-const HRDashboard = React.lazy(() => import('./components/hr/HRDashboard'));
 const TVMeetingRoomManager = React.lazy(() => import('./components/TVMeetingRoomManager').then(m => ({ default: m.TVMeetingRoomManager })));
 const AuditLogManager = React.lazy(() => import('./components/AuditLogManager').then(m => ({ default: m.AuditLogManager })));
-const CredentialManager = React.lazy(() => import('./components/CredentialManager'));
 
 const HelpdeskManager = React.lazy(() => import('./components/HelpdeskManager').then(m => ({ default: m.HelpdeskManager })));
 const LoginPage = React.lazy(() => import('./components/LoginPage').then(m => ({ default: m.LoginPage })));
@@ -277,12 +274,9 @@ const InternalApp: React.FC = () => {
   const isAdminOrSuperAdmin = isSuperAdmin || roleLower === 'admin';
   const userGroups = (currentUser?.groups || []).map((g: string) => String(g).toLowerCase().trim());
 
-  const canAccessEmployeeData = isAdminOrSuperAdmin || userGroups.some((g: string) => ['hr', 'hrd', 'employee-data'].includes(g));
   const canAccessUsers = isAdminOrSuperAdmin || userGroups.includes('users');
-  const canAccessCredentials = isAdminOrSuperAdmin || userGroups.includes('credential');
   const canAccessSystemSettings = isAdminOrSuperAdmin || userGroups.includes('system-settings');
   const canAccessMaintenance = isSuperAdmin;
-  const canAccessHR = isAdminOrSuperAdmin || userGroups.some((g: string) => ['hr', 'hrd', 'employee-data', 'attendance-request', 'attendance_request'].includes(g));
   const canAccessTrackingLog = isAdminOrSuperAdmin || userGroups.includes('tracking-log');
 
   useEffect(() => {
@@ -756,7 +750,7 @@ const InternalApp: React.FC = () => {
                           onShare={handleGlobalShare}
                         >
                           <Routes>
-                            <Route index element={currentUser?.groups?.some((group: string) => String(group).toLowerCase() === 'hr') ? <Navigate to="/hr-dashboard" replace /> : <HomeDashboard onNavigate={(v) => navigate(`/${v}`)} userName={currentUser?.fullName} userRole={currentUser?.role} currentUser={currentUser} />} />
+                            <Route index element={<HomeDashboard onNavigate={(v) => navigate(`/${v}`)} userName={currentUser?.fullName} userRole={currentUser?.role} currentUser={currentUser} />} />
                             <Route path="profile" element={<ProfileView onLogout={() => setIsLogoutModalOpen(true)} user={currentUser} onUpdateSuccess={refreshUserProfile} />} />
                             <Route path="helpdesk" element={<HelpdeskManager currentUser={currentUser} />} />
                             <Route path="activity" element={<ActivityLogManager currentUser={currentUser} />} />
@@ -770,30 +764,9 @@ const InternalApp: React.FC = () => {
                             <Route path="extension-directory" element={<ExtensionDirectory currentUser={currentUser} externalFloorFilter={globalFloorFilter} onFloorFilterChange={setGlobalFloorFilter} />} />
                             <Route path="office-layout" element={<OfficeLayoutManager currentUser={currentUser} />} />
                             <Route path="tv-meeting-rooms" element={<TVMeetingRoomManager currentUser={currentUser} />} />
-                            <Route path="hr-dashboard" element={
-                              <RouteGuard allowed={canAccessHR} moduleName="HR Dashboard" requiredAccess="Tim Human Resources (HR) atau Administrator" currentUser={currentUser}>
-                                <HRDashboard currentUser={currentUser} />
-                              </RouteGuard>
-                            } />
-                            <Route path="attendance" element={<AttendanceManager currentUser={currentUser} />} />
-                            <Route path="attendance-report" element={<AttendanceManager currentUser={currentUser} />} />
-                            <Route path="calendar" element={<AttendanceManager currentUser={currentUser} />} />
-                            <Route path="attendance-calendar" element={<AttendanceManager currentUser={currentUser} />} />
-                            <Route path="attendance-request" element={<AttendanceManager currentUser={currentUser} />} />
-                            <Route path="attendance-locations" element={<AttendanceManager currentUser={currentUser} />} />
                             <Route path="users" element={
                               <RouteGuard allowed={canAccessUsers} moduleName="User Accounts" requiredAccess="Super Admin atau Admin" currentUser={currentUser}>
                                 <UserManagement onUpdateSuccess={refreshUserProfile} currentUser={currentUser} />
-                              </RouteGuard>
-                            } />
-                            <Route path="employee-data" element={
-                              <RouteGuard allowed={canAccessEmployeeData} moduleName="Data Employee" requiredAccess="Administrator, Tim HR, atau grup 'employee-data'" currentUser={currentUser}>
-                                <EmployeeDataManager onUpdateSuccess={refreshUserProfile} currentUser={currentUser} />
-                              </RouteGuard>
-                            } />
-                            <Route path="credential" element={
-                              <RouteGuard allowed={canAccessCredentials} moduleName="Credentials Vault" requiredAccess="Super Admin atau Admin" currentUser={currentUser}>
-                                <CredentialManager currentUser={currentUser} />
                               </RouteGuard>
                             } />
                             <Route path="master-company" element={<MasterCompany currentUser={currentUser} />} />

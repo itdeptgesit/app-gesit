@@ -74,7 +74,6 @@ BarChart2,
 const CSL_IDS = ['csl-requests', 'routine', 'budget', 'reports']
 const IT_IDS  = ['it-operations', 'it-payment', 'it-assets', 'tv-meeting-rooms']
 const DIRECTORY_IDS = ['directory-external', 'extension-directory', 'office-layout']
-const HR_IDS = ['hr-dashboard', 'attendance', 'employee-data']
 
 const ICON_MAP: Record<string, React.ComponentType<any>> = {
   LayoutDashboard: LayoutDashboard,
@@ -179,9 +178,6 @@ export function AppSidebarModern({
         if (g === "reports" || g === "reports_view") {
           allowed.add("reports"); allowed.add("reports-request"); allowed.add("reports-task"); allowed.add("reports-budget")
         }
-        if (g === "hr" || g === "hrd" || g === "employee-data") {
-          allowed.add("employee-data"); allowed.add("hr-dashboard");
-        }
         if (g === "users" || g === "user_accounts") {
           allowed.add("users");
         }
@@ -272,7 +268,6 @@ export function AppSidebarModern({
   const cslItems       = buildItems(CSL_IDS)
   const itItems        = buildItems(IT_IDS)
   const directoryItems = buildItems(DIRECTORY_IDS)
-  const hrItems        = buildItems(HR_IDS)
 
   const adminItems: NavItem[] = React.useMemo(() => {
     const allMenus = APP_MENU_STRUCTURE
@@ -336,7 +331,6 @@ export function AppSidebarModern({
         {cslItems.length > 0       && <NavGroup title="CSL" items={cslItems} />}
         {itItems.length > 0        && <NavGroup title="IT" items={itItems} />}
         {directoryItems.length > 0 && <NavGroup title="Office & Directory" items={directoryItems} />}
-        {hrItems.length > 0        && <NavGroup title="Human Resources" items={hrItems} />}
         {adminItems.length > 0     && <NavGroup title="Administration" items={adminItems} />}
       </SidebarContent>
 

@@ -53,12 +53,7 @@ export function GlobalSearch({
     [setOpen]
   )
 
-  const mainMenus = APP_MENU_STRUCTURE.filter((m) => {
-    if (m.parentId) return false;
-    if (m.id === "employee-data" && !canAccessHR) return false;
-    if (m.id === "hr-dashboard" && !canAccessHR) return false;
-    return true;
-  });
+  const mainMenus = APP_MENU_STRUCTURE.filter((m) => !m.parentId);
 
   const adminMenus = canAccessAdmin
     ? APP_MENU_STRUCTURE.filter((m) => m.parentId === "admin")
