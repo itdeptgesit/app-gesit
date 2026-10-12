@@ -1,0 +1,3 @@
+-- Temporary hashed tokens for end-to-end calendar verification.
+INSERT INTO public.tv_device_tokens (device_id, token_hash, label, expires_at) SELECT id, 'c782b57dc95f0af35d4b3271b893d40e87f448a626744eac907f1dd256d3ed39', 'Automated calendar verification', NOW() + INTERVAL '15 minutes' FROM public.tv_devices WHERE device_code = 'MEETING-ROOM-01';
+INSERT INTO public.tv_device_tokens (device_id, token_hash, label, expires_at) SELECT id, 'eeb07906a2d7b33eac01d7006d5a4792316565c397730135f268903eca8bdf0e', 'Automated calendar verification', NOW() + INTERVAL '15 minutes' FROM public.tv_devices WHERE device_code = 'BOARD-ROOM-01';

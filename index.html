@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✅ GOOGLE FONTS: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>GESIT PORTAL - Enterprise Work Platform</title>
+  <meta name="description"
+    content="GESIT PORTAL Enterprise Work Platform - Integrated workspace for teams and operations." />
+
+  <!-- ✅ FAVICON & PRELOADS -->
+  <link rel="icon" type="image/png" href="/image/logo.png" />
+  <link rel="preload" as="image" href="/image/bg.jpeg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/image/logo.png" fetchpriority="high" />
+
+  <!-- ✅ ENV CONFIG -->
+  <script>
+    window.process = {
+      env: {
+        NEXT_PUBLIC_SUPABASE_URL: 'https://yihjfrxdrhkqfnjofvua.supabase.co',
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ''
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="/index.css">
+  <!-- ✅ Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- ✅ dotLottie Player for Weather Animations -->
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+    "claudeCodeChat.permissions.yoloMode": false,
+    "deno.enable": false,
+    "deno.enablePaths": [
+        "supabase/functions"
+    ],
+    "deno.lint": true,
+    "deno.unstable": [],
+    "css.lint.unknownAtRules": "ignore"
+}

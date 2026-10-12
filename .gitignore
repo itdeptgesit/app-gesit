@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.gemini/
+.gemini_temp_repo/
+
+# Environment files — NEVER commit secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Nested duplicate repos (repo-gesit-erp, repo-csl-system)
+repo-*/
+
+# Logs & temp files
+*.log
+task.xml
+10
+tmp_*
+dbg_*
