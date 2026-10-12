@@ -2,6 +2,7 @@ node_modules/
 dist/
 .gemini/
 .gemini_temp_repo/
+.vscode/
 
 # Environment files — NEVER commit secrets
 .env
@@ -18,3 +19,9 @@ task.xml
 10
 tmp_*
 dbg_*
+
+# Ignore SQL & Markdown files
+*.sql
+**/*.sql
+*.md
+**/*.md

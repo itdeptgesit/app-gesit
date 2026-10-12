@@ -1,3 +1,0 @@
--- Temporary tokens to verify shared Google calendars.
-INSERT INTO public.tv_device_tokens (device_id, token_hash, label, expires_at) SELECT id, '21b07bf650dd2fa51f7d430bcf3242483101d19dd2357932cc732783ed45df16', 'Shared calendar verification', NOW() + INTERVAL '15 minutes' FROM public.tv_devices WHERE device_code = 'MEETING-ROOM-01';
-INSERT INTO public.tv_device_tokens (device_id, token_hash, label, expires_at) SELECT id, '388ea0807cfa4896716a67406640e96317849fb6c4f56b398e1b96a2b628cc01', 'Shared calendar verification', NOW() + INTERVAL '15 minutes' FROM public.tv_devices WHERE device_code = 'BOARD-ROOM-01';
